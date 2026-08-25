@@ -6,15 +6,20 @@ CREATE DATABASE IF NOT EXISTS flo_app CHARACTER SET utf8mb4 COLLATE utf8mb4_unic
 USE flo_app;
 
 -- Table : users
-CREATE TABLE IF NOT EXISTS users (
-    id            INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    nom           VARCHAR(100)        NOT NULL,
-    prenom        VARCHAR(100)        NOT NULL,
+CREATE TABLE IF NOT EXISTS L (
+    id            INT  AUTO_INCREMENT PRIMARY KEY,
     email         VARCHAR(255)        NOT NULL UNIQUE,
-    password      VARCHAR(255)        NOT NULL,
-    date_naissance DATE               DEFAULT NULL,
+    password      VARCHAR(255)        NOT NULL
 ) ;
-
+--table inscription
+CREATE TABLE IF NOT EXISTS inscription(
+    id  INT  AUTO_INCREMENT PRIMARY KEY,
+    nom   VARCHAR(100)        NOT NULL,
+    prenom VARCHAR(100)        NOT NULL,
+    email  VARCHAR(100)        NOT NULL,
+    password VARCHAR(100)        NOT NULL,
+    conf_mot_pass  VARCHAR(255)       NOT NULL 
+);
 -- Table : cycles
 CREATE TABLE IF NOT EXISTS cycles (
     id            INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -26,7 +31,7 @@ CREATE TABLE IF NOT EXISTS cycles (
     notes         TEXT                DEFAULT NULL,
     date_creation DATETIME            NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-) ENGINE=InnoDB;
+) ;
 
 -- Table : period_days
 CREATE TABLE IF NOT EXISTS period_days (
@@ -39,7 +44,7 @@ CREATE TABLE IF NOT EXISTS period_days (
     UNIQUE KEY unique_user_date (user_id, date),
     FOREIGN KEY (cycle_id) REFERENCES cycles(id) ON DELETE CASCADE,
     FOREIGN KEY (user_id)  REFERENCES users(id)  ON DELETE CASCADE
-) ENGINE=InnoDB;
+) ;
 
 -- Table : symptoms
 CREATE TABLE IF NOT EXISTS symptoms (
@@ -51,7 +56,7 @@ CREATE TABLE IF NOT EXISTS symptoms (
     notes       TEXT                DEFAULT NULL,
     date_creation DATETIME          NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-) ENGINE=InnoDB;
+) ;
 
 -- Table : moods
 CREATE TABLE IF NOT EXISTS moods (
@@ -63,7 +68,7 @@ CREATE TABLE IF NOT EXISTS moods (
     date_creation DATETIME          NOT NULL DEFAULT CURRENT_TIMESTAMP,
     UNIQUE KEY unique_user_date (user_id, date),
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-) ENGINE=InnoDB;
+);
 
 -- Table : sleep_logs
 CREATE TABLE IF NOT EXISTS sleep_logs (
@@ -77,16 +82,7 @@ CREATE TABLE IF NOT EXISTS sleep_logs (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
--- Table : pain_logs
-CREATE TABLE IF NOT EXISTS pain_logs (
-    id          INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    user_id     INT UNSIGNED        NOT NULL,
-    date        DATE                NOT NULL,
-    zone        VARCHAR(50)         NOT NULL,
-    intensite   TINYINT UNSIGNED    NOT NULL DEFAULT 1,
-    date_creation DATETIME          NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-) ENGINE=InnoDB;
+
 
 -- Table : notes
 CREATE TABLE IF NOT EXISTS notes (
@@ -110,18 +106,7 @@ CREATE TABLE IF NOT EXISTS articles (
     duree_lecture TINYINT UNSIGNED  DEFAULT 5,
     publie      TINYINT(1)          NOT NULL DEFAULT 1,
     date_creation DATETIME          NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB;
-
--- Table : notifications
-CREATE TABLE IF NOT EXISTS notifications (
-    id          INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    user_id     INT UNSIGNED        NOT NULL,
-    type        VARCHAR(50)         NOT NULL,
-    message     TEXT                NOT NULL,
-    lu          TINYINT(1)          NOT NULL DEFAULT 0,
-    date_creation DATETIME          NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-) ENGINE=InnoDB;
+) ;
 
 -- Table : settings
 CREATE TABLE IF NOT EXISTS settings (
@@ -134,6 +119,5 @@ CREATE TABLE IF NOT EXISTS settings (
     notif_alerte_regles     TINYINT(1)       DEFAULT 1,
     notif_jours_avant       TINYINT UNSIGNED DEFAULT 2,
     notif_ovulation         TINYINT(1)       DEFAULT 1,
-    methode_contraception   VARCHAR(50)      DEFAULT NULL,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-) ENGINE=InnoDB;
+) ;
