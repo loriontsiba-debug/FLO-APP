@@ -13,10 +13,7 @@ CREATE TABLE IF NOT EXISTS users (
     email         VARCHAR(255)        NOT NULL UNIQUE,
     password      VARCHAR(255)        NOT NULL,
     date_naissance DATE               DEFAULT NULL,
-    reset_token   VARCHAR(255)        DEFAULT NULL,
-    reset_expires DATETIME            DEFAULT NULL,
-    date_creation DATETIME            NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB;
+) ;
 
 -- Table : cycles
 CREATE TABLE IF NOT EXISTS cycles (
