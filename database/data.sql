@@ -6,12 +6,19 @@ CREATE DATABASE IF NOT EXISTS flo_app CHARACTER SET utf8mb4 COLLATE utf8mb4_unic
 USE flo_app;
 
 -- Table : users
-CREATE TABLE IF NOT EXISTS users(
-    id           INT UNSIGNED  AUTO_INCREMENT PRIMARY KEY,
-    nom          VARCHAR(100)        NOT NULL,
-    prenom       VARCHAR(100)        NOT NULL,
-    email        VARCHAR(100)        NOT NULL,
-    password     VARCHAR(100)        NOT NULL
+CREATE TABLE IF NOT EXISTS L (
+    id            INT  AUTO_INCREMENT PRIMARY KEY,
+    email         VARCHAR(255)        NOT NULL UNIQUE,
+    password      VARCHAR(255)        NOT NULL
+) ;
+--table inscription
+CREATE TABLE IF NOT EXISTS inscription(
+    id  INT  AUTO_INCREMENT PRIMARY KEY,
+    nom   VARCHAR(100)        NOT NULL,
+    prenom VARCHAR(100)        NOT NULL,
+    email  VARCHAR(100)        NOT NULL,
+    password VARCHAR(100)        NOT NULL,
+    conf_mot_pass  VARCHAR(255)       NOT NULL 
 );
 -- Table : cycles
 CREATE TABLE IF NOT EXISTS cycles (
