@@ -1,5 +1,11 @@
 Body{
     margin: 0;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+html{
+    max-width: 100%;
+    overflow-x: hidden;
 }
 ul{
     list-style: none;
@@ -180,5 +186,30 @@ right: 190px;
 main{
 background-color: rgba(255, 192, 203, 0.642);
 
+}
+
+@media screen and (max-width: 700px){
+    ul,
+    .span1{
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+    .S1, .S2, .S3, .S4{
+        width: min(200px, 42vw);
+    }
+    .di20{
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: auto;
+        margin-right: 0;
+        margin-left: 0;
+    }
+    .di20 div{
+        box-sizing: border-box;
+        width: 100%;
+    }
+    .div1,
+    .div3{
+        right: auto;
+    }
 }
 
