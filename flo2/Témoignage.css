@@ -1,0 +1,237 @@
+body{
+    background-color: #f8f9fa;
+}
+.first{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    z-index: 1000;
+    right: 0;
+    left: 0;
+    top: 0;
+    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
+
+}
+ 
+.flo a p{
+    font-weight:bold ;
+    color:rgb(54, 7, 99); 
+    font-size: 22px;
+    font-family :  'Nunito' , sans-serif;
+}
+.flo a p::after{
+    content: '🩸';
+    font-size: small;
+}
+nav ul{
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+a{
+    text-decoration: none;
+    color: #4f4f4fe9;
+}
+.validation{
+    display: flex;
+    gap: 16px;
+}
+.bt1,.bt2{
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid rgb(56, 55, 55);
+}
+ .bt1:hover{
+    outline: 1px solid rgb(43, 3, 81); 
+}
+.bt1{
+ color: rgb(43, 3, 81);
+ cursor: pointer;
+}
+
+.bt2{
+color: aliceblue;
+background-color: rgb(54, 7, 99);
+font-weight:bolder ;
+cursor: pointer;
+  font-family :  'Nunito' , sans-serif;
+}
+.bt2:hover{
+    transform: translateY(-8px);
+    box-shadow: 0 6px 19px rgba(83, 80, 80, 0.813) ;
+    transition: 0.9s;
+}
+.burger{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    background:none;
+    border:none;
+    cursor:pointer
+}
+.burger span{
+    width:25px; 
+    height:3px; 
+    background:#333; 
+    transition:0.3s
+}
+.section2{
+display: grid;
+grid-template-rows: repeat(2,350px);
+grid-template-columns:repeat(3,350px) ;
+column-gap: 20px;
+justify-content: space-evenly;
+margin-top: 100px;
+
+}
+.foot1{
+    display: flex;
+    justify-content: space-between;
+    line-height: 30px;
+     margin-right: 80px;
+    margin-left: 80px;
+    padding: 12px;
+}
+.foot1 ul {
+    list-style: none;
+    line-height: 28px; 
+}
+.foot1  .p p{
+    margin-left: 40px;
+}
+hr{
+    width: 1111px;
+}
+.foot2{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 60px;
+    margin-left: 80px;
+    padding: 30px;
+    color: white;
+}
+footer{
+    background-color:rgb(43, 3, 81) ;
+    padding: 12px;
+   margin-top: 60px;
+}
+.foot1 p{
+    color: white;
+}   
+.foot1 a p{
+    color: white;
+}
+.témoins{
+    text-align: center;
+}
+.avis{
+    display:grid;
+    grid-template-columns: repeat(3, 350px);
+    grid-template-rows: repeat(2, 350px);  
+    justify-content: space-evenly;
+    margin-top: 100px;
+
+}
+.avis .items{
+    background-color:rgba(245, 245, 220, 0.68);
+    color:black;
+    border-radius: 20px;
+    padding: 30px;
+    width:300px;
+    height: 200px;
+}
+.items span{
+    color: gold;
+}
+.art1 p{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    background-color:rgb(43, 3, 81); 
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    color: white;
+    align-items: center;
+    font-weight: bold;
+}
+.flex{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+#container{
+  
+    margin-top: 100px;
+}
+.témoins p{
+    color: rgb(43, 3, 81);
+     font-family :  'Nunito' , sans-serif;
+     font-weight: bold;
+}
+@media (max-width: 1200px) {
+    .container{
+        flex-direction: column;
+        margin-top: 150px;
+    }
+    
+   
+       html, body {
+          overflow-x: hidden; 
+          align-items: center;
+          justify-content: center;
+        }
+        main{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+  .burger{
+    display:flex
+} 
+  nav{
+    position:absolute; 
+    top:70px; 
+    right:0;
+    background:white;
+    width:250px;
+    padding:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    transform:translateX(100%); 
+    transition:0.3s;
+    border-radius: 18px;
+  }
+  nav.active{
+    transform:translateX(0)
+} 
+  
+  nav ul {
+    flex-direction:column; 
+    gap:15px
+}
+.validation{
+     flex-direction:column;
+     gap: 12px;
+
+    }
+ .foot1,.foot2{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+
+.avis{
+    display: grid;
+    grid-template-columns: repeat(1, 350px);
+    grid-template-rows: repeat(6, 350px);  
+    justify-content: space-evenly;
+    margin-top: 100px;}
+    
+}
