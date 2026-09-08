@@ -1,33 +1,47 @@
 <?php
-
 $email = "";
+$passe = "";
+
 
 $erreurEmail = "";
 $erreurPasse = "";
 
+require_once 'conec_data.php';
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $email = htmlspecialchars(trim($_POST["email"]));
-    $passe = trim($_POST["passe"]);
-    // Email
+    $email = htmlspecialchars(trim($_POST["email"] ?? ""));
+    $passe = trim($_POST["passe"] ?? "");
+
     if (empty($email)) {
         $erreurEmail = "Veuillez saisir votre email.";
-    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $erreurEmail = "Email invalide.";
-    }
-
-    // Mot de passe
-    if (empty($passe)) {
+        } else if (empty($passe)) {
         $erreurPasse = "Veuillez saisir votre mot de passe.";
-    } elseif (strlen($passe) < 8) {
-        $erreurPasse = "Le mot de passe invalide";
-    }
-    // Tout est correct
-    if (
-        empty($erreurEmail) &&
-        empty($erreurPasse)
-    ) {
-        echo "<script>alert('connexion réussie !');</script>";
+        } else {
+            $requete = $connexion->prepare("SELECT * FROM users WHERE email = :email");
+            $requete->execute([
+            ':email' => $email
+            ]);
+
+            $user = $requete->fetch();
+        if (!$user) {
+
+            $erreurEmail = "Adresse e-mail incorrect.";
+
+        } elseif (!password_verify($passe, $user['password'])) {
+
+            $erreurPasse = " mot de passe incorrect.";
+
+        } else {
+
+            session_start();
+
+            $_SESSION['id'] = $user['id'];
+            $_SESSION['nom'] = $user['nom'];
+
+            header("Location: ../accueil.php");
+            exit();
+        }
     }
 }
     ?>

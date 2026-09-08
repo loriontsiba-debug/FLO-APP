@@ -46,17 +46,19 @@ a{
  .bt1:hover{
     outline: 1px solid rgb(43, 3, 81); 
 }
-.bt1{
+.bt1 a{
  color: rgb(43, 3, 81);
  cursor: pointer;
 }
 
 .bt2{
-color: aliceblue;
 background-color: rgb(54, 7, 99);
 font-weight:bolder ;
 cursor: pointer;
   font-family :  'Nunito' , sans-serif;
+}
+.bt2 a{
+color: aliceblue;
 }
 .bt2:hover{
     transform: translateY(-8px);
@@ -97,6 +99,10 @@ section div img{
     border-radius: 12px;
     cursor: pointer;
     margin-top: 20px;
+}
+#but a{
+    color: white;
+    text-decoration: none;
 }
 #but:hover{
   box-shadow: 0 6px 19px rgba(83, 80, 80, 0.813) ;
@@ -205,20 +211,12 @@ footer{
 .foot1 a p{
     color: white;
 }
-@media (max-width: 1200px) {
+@media (max-width: 1100px) {
     .container{
         flex-direction: column;
         margin-top: 150px;
     }
-    .apr{
-        position: absolute;
-         position: absolute;
-        bottom: -550px;
-        left: 50px;
-         width: 150px;
-         height: 150px;
-
-    }
+    .apr { position: relative; inset: auto; width: 150px; height: 150px; margin: -80px auto 0; }
     section div img{
         width: 100%;
         height: auto;
@@ -275,4 +273,24 @@ footer{
     text-align: center;
 }
     
+    .container { gap: 32px; padding: 0 24px; }
+    .sect0 { margin-top: 40px; }
+    .sect0 br { display: none; }
+    .container section div img { max-width: 100%; height: auto; }
+    .foot1, .foot2 { flex-wrap: wrap; gap: 24px; margin-left: 24px; margin-right: 24px; }
+    hr { width: calc(100% - 48px); }
+}
+
+@media (max-width: 699px) {
+    .first { padding: 8px 16px; flex-wrap: nowrap; gap: 12px; }
+    .flo { margin-right: auto; flex: 0 0 auto; }
+    .validation { display: flex; flex: 0 1 auto; flex-direction: row; gap: 8px; }
+    .validation button { flex: 0 1 auto; min-width: 0; padding: 7px 4px; font-size: 10px; line-height: 1.15; }
+    .validation a { white-space: normal; }
+    nav { top: 68px; }
+    .container { padding: 0 16px; }
+    .sect0 h1 { font-size: 30px; }
+    .sect0 p { margin-left: 0; }
+    .foot1, .foot2 { flex-direction: column; align-items: center; text-align: center; margin: 0 16px; }
+    .foot1 .p p { margin-left: 0; }
 }

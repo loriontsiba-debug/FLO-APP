@@ -1,12 +1,14 @@
-<?php ?>
+<?php 
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="Comment.css">
-    <link rel="stylesheet" href="asset/">
+    <link rel="stylesheet" href="Article.css">
 </head>
 <body>
     <header>
@@ -32,40 +34,69 @@
          <button class="bt2"><a href="\Authentification\inscri.php">Commencer gratuitement</a></button>
       </div>
       </section >
+      <section class="hero">
+           <section class="lect">
+                <div class="lect1">
+                      <p>Articles</p>
+                      <h2>Approfondissez vos connaissances</h2>
+                </div>
+                <div class="lect2">
+                  <button type="submit"  class="but"><a href="">Tous les articles <span>→</span></a></button>
+                </div>
+        </section>
+        <section class="art">
+                <article class="art1">
+                        <div class="art11">
+                            <img src="./asset/OIP.webp" alt="" width="350px" height="350px">
+                        </div>
+                        <div class="art12">
+                            <p><span>Fertilité</span></p>
+                            <h3>Comprendre votre fenêtre fertile</h3>
+                            <p>5 min de lecture</p>
+                        </div>
+                </article>
+                <article class="art1">
+                        <div class="art11">
+                            <img src="./asset/blog-lactose-intolerantie-1-850x400.webp" alt="" width="350px" height="350px">
+                        </div>
+                        <div class="art12">
+                            <p><span>Bien-être</span></p>
+                            <h3>A L'impact du sommeil sur votre cycle</h3>
+                            <p>4 min de lecture</p>
+                        </div>
+                </article>
+                <article class="art1">
+                        <div class="art11">
+                             <img src="./asset/_d3e1c6e6-828c-44e8-bdad-c9ae6374565e.jpeg" alt="" width="350px" height="350px">
+                        </div>
+                        <div class="art12">
+                            <p><span>Nutrition</span></p>
+                            <h3>L'Alimentation et les règles douloureuses </h3>
+                            <p>6 min de lecture</p>
+                        </div>
+                </article>
+        </section>
+      </section>
     </header>
     <main>
-        <div class="container">
-        <section class="sect0">
-           <p class="p1"> Comment ça marche</p>
-           <h1>Simple à prendre en main,<br>puissant sur la durée</h1>
-           <div>
-             <h3><span>1.</span>Créez votre compte</h3>
-             <p>Inscription en 30 secondes. Aucune carte bleue requise, accès immédiat à <br>toutes les fonctionnalités.</p>
-           </div>
-           <div>
-             <h3><span>2.</span>Renseignez vos données initiales</h3>
-             <p>Date de vos dernières règles, durée habituelle de votre cycle. Flo s'adapte<br> à votre historique.</p>
-           </div>
-           <div>
-             <h3><span>3.</span>Suivez au quotidien</h3>
-             <p>Quelques secondes chaque jour pour enregistrer votre humeur, symptômes et flux. <br>Le journal s'enrichit au fil du temps.</p>
-           </div>
-           <div>
-             <h3><span>4.</span>Profitez des prédictions</h3>
-             <p>Dès le deuxième cycle, nos prédictions s'affinent pour vous donner des estimations <br> précises de vos prochaines règles et jours fertiles.</p>
-           </div>
-           <div>
-            <button id="but"> <a href="\Authentification\inscri.php">commencer maintenant</a></button>
-           </div>
-        </section class="sect1">
-        <section>
-            <div><img src="asset/blog-lactose-intolerantie-1-850x400.webp" alt="" width="500px" height="500px"></div>
-            <div class="apr">
-              <p>précisions des prédictions</p>
-              <span>94%</span>
-              <h5>apres 3 cycles</h5>
-            </div>
-        </section>
+     <section class="container">
+        <div class="circle1">
+          <P class="p1">Commencez aujourd'hui</P>
+          <h2>Votre santé mérite une attention <span class="cool">sincère et continue</span></h2>
+          <p class="p2">Rejoignez les 12 000 femmes qui suivent leur cycle avec Flo. Gratuit, sécurisé, sans publicité.</p>
+          <div class="circle10">
+            <button class="but1"><a href="\Authentification\inscri.php">Créer un compte gratuit</a></button>
+            <button class="but2"><a href="\Authentification\Connec.php">Accèder à l'app</a></button>
+            <p class="p3">Aucune carte bleue · Données chiffrées · Sans engagement</p>
+        </div>
+        </div>
+       
+     </section>
+      <div class="circle2">
+
+        </div>
+        <div class="circle3">
+         
         </div>
     </main>
     <footer>
@@ -114,7 +145,7 @@
           </div>
      </section>
     </footer>
-    
+</body>
 <script>
 const burger = document.getElementById('burger');
 const menu = document.getElementById('menu');
@@ -124,5 +155,4 @@ burger.onclick = () => {
   burger.classList.toggle('active');
 }
 </script>
-</body>
 </html>

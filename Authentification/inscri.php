@@ -3,12 +3,15 @@
 $nom = "";
 $prenom = "";
 $email = "";
+$passe = "";
 
 $erreurNom = "";
 $erreurPrenom = "";
 $erreurEmail = "";
 $erreurPasse = "";
 $erreurPassee = "";
+
+require 'conec_data.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -18,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $passe = trim($_POST["passe"]);
     $passee = trim($_POST["passee"]);
 
-    // Nom
+         // Nom
     if (empty($nom)) {
         $erreurNom = "Veuillez saisir votre nom.";
     }
@@ -42,25 +45,57 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $erreurPasse = "Le mot de passe doit contenir au moins 8 caractères.";
     }
 
+   
     // Confirmation
     if (empty($passee)) {
         $erreurPassee = "Veuillez confirmer le mot de passe.";
     } elseif ($passe != $passee) {
         $erreurPassee = "Les mots de passe ne correspondent pas.";
     }
-
-    // Tout est correct
-    if (
-        empty($erreurNom) &&
-        empty($erreurPrenom) &&
-        empty($erreurEmail) &&
-        empty($erreurPasse) &&
-        empty($erreurPassee)
-    ) {
-        echo "<script>alert('Inscription réussie !');</script>";
-    }
-
 }
+
+    if (isset($_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['passe'], $_POST['passee'])) {
+
+    $nom = htmlspecialchars(trim($_POST["nom"]));
+    $prenom = htmlspecialchars(trim($_POST["prenom"]));
+    $email = htmlspecialchars(trim($_POST["email"]));
+    $passe = trim($_POST["passe"]);
+    $passee = trim($_POST["passee"]);
+    if (
+    empty($erreurNom) &&
+    empty($erreurPrenom) &&
+    empty($erreurEmail) &&
+    empty($erreurPasse) &&
+    empty($erreurPassee)
+     ) {
+        $requete = $connexion->prepare("SELECT * FROM users WHERE email = :email");
+        $requete->execute([
+            ':email' => $email
+        ]);
+        if ($requete->fetch()) {
+        $erreurEmail = "Cette adresse e-mail est déjà utilisée.";
+
+        }
+         else {
+              $hashedPassword = password_hash($passe, PASSWORD_DEFAULT);
+
+              $requete = $connexion->prepare("INSERT INTO users (nom, prenom, email, password)VALUES (:nom, :prenom, :email, :password)");
+        $requete->execute([
+            ':nom' => $nom,
+            ':prenom' => $prenom,
+            ':email' => $email,
+            ':password' => $hashedPassword
+        ]);
+              
+        
+            header("Location: ../home.php");
+            exit();
+
+        }   
+    }
+   
+}    
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -141,14 +176,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="glass glass5"></div>
             <div class="glass glass6"></div>
             <div class="glass glass7"></div>
-             <div class="glass glass8"></div>
+            <div class="glass glass8"></div>
             <div class="glass glass9"></div>
             <div class="glass glass10"></div>
             <div class="glass glass11"></div>
             <div class="glass glass12"></div>
             <div class="glass glass13"></div>
             <div class="glass glass14"></div>
-              <div class="glass glass15"></div>
+            <div class="glass glass15"></div>
             <div class="glass glass16"></div>
             <div class="glass glass17"></div>
             <div class="glass glass18"></div>

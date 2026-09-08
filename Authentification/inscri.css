@@ -24,9 +24,9 @@ form{
     border-top: 1px solid rgba(255, 255, 255, .3);
     box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, .2);
     text-align: center;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
     -moz-backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
 }
 h1{
     color: #FFFF;
@@ -51,9 +51,9 @@ input{
     padding: 1rem;
     border-radius: 20px;
     width: 300px;
-    backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     -moz-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
     box-shadow: 4px 4px 60px rgba(0, 0, 0,.2);
     color: #FFFF;
     font-weight: 500;
@@ -85,9 +85,9 @@ input[type="submit"]{
     box-shadow: 4px 4px 60px -8px rgba(0, 0, 0,.2);
       border-left: 1px solid rgba(255, 255, 255, .3);
     border-top: 1px solid rgba(255, 255, 255, .3);
-     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     -moz-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
     position: absolute;
     border-radius: 20px;
 }
@@ -231,4 +231,19 @@ margin-bottom: 40px;
 }
 .confp{
 margin-bottom: 40px;
+}
+
+@media screen and (max-width: 1200px){
+    body { min-height: 100vh; height: auto; overflow-x: hidden; padding: 40px 24px; }
+    form { box-sizing: border-box; width: min(100%, 500px); height: auto; margin-bottom: 0; padding: 50px; }
+    input { box-sizing: border-box; width: min(100%, 300px); }
+    .glass { transform: scale(.8); }
+}
+
+@media screen and (max-width: 600px){
+    body { padding: 24px 16px; align-items: flex-start; }
+    .contenair { width: 100%; margin-top: 24px; }
+    form { width: 100%; padding: 40px 24px; }
+    input { width: 100%; }
+    .glass { display: none; }
 }
