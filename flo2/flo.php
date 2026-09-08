@@ -28,12 +28,12 @@ $nb_utilisateurs = 1542;
                   <li><a href="flo.php">Fonctionnalités</a></li>
                   <li><a href="Comment ça marche.php">Comment ça marche</a></li>
                   <li><a href="Témoignage.php">Témoignage</a></li>
-                  <li><a href="Articles.php">Articles</a></li>
+                  <li><a href="Article.php">Articles</a></li>
                </ul>
-        </nav>
+        </nav> 
       <div class="validation">
-         <button class="bt1">Connexion</button>
-         <button class="bt2">Commencer gratuitement</button>
+         <button class="bt1" ><a href="\Authentification\connec.php ">Connexion</a></button>
+         <button class="bt2"><a href="\Authentification\inscri.php">Commencer gratuitement</a></button>
       </div>
       </section >
       <section class="hero">
@@ -48,8 +48,8 @@ $nb_utilisateurs = 1542;
                             <P>Flo vous accompagne dans le suivi de votre cycle <br> menstruel — calendrier,symptomes,prédictions <br>d'ovulation et articles éducatifs réunis en un seul outil.</P>
                         </div>
                         <div class="bt">
-                            <button class="bt3">essayer gratuitement</button>
-                            <button class="bt4">voir la demo</button>
+                            <button class="bt3"><a href="\Authentification\inscri.php">essayer gratuitement</a></button>
+                            <button class="bt4"><a href="\Demo\demo.php">voir la demo</a></button>
                         </div>
                        <div class="compteur">
                                <strong><span>+</span></strong> <var id="compteur" data-target="<?php echo $nb_utilisateurs ;?>" ></var>
@@ -87,7 +87,7 @@ $nb_utilisateurs = 1542;
     </header>
 
     <main>
-       <section class="section1">
+       <section class="section1" id="">
           <p>Fonctionnalités</p>
           <h1>Tout ce dont vous avez <br>besion,réuni en un seul <br>endroit</h1>
           <p>une application pensée par des femmes.Simple à <br>utiliser,puissante dans ses analyses.</p>

@@ -24,12 +24,12 @@
                   <li><a href="flo.php">Fonctionnalités</a></li>
                   <li><a href="Comment ça marche.php">Comment ça marche</a></li>
                   <li><a href="Témoignage.php">Témoignage</a></li>
-                  <li><a href="Articles.php">Articles</a></li>
+                  <li><a href="Article.php">Articles</a></li>
                </ul>
         </nav>
       <div class="validation">
-         <button class="bt1">Connexion</button>
-         <button class="bt2">Commencer gratuitement</button>
+       <button class="bt1" ><a href="\Authentification\connec.php">Connexion</a></button>
+         <button class="bt2"><a href="\Authentification\inscri.php">Commencer gratuitement</a></button>
       </div>
       </section >
     </header>

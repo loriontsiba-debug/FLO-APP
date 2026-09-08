@@ -3,10 +3,11 @@
 $serveur = "localhost";
 $base = "flo_app";
 $utilisateur = "root";
-$motdepasse = "25ADrx@";
+$motdepasse = "";
+$port = 3306;
 
 try {
-    $connexion = new PDO("mysql:host=$serveur;dbname=$base", $utilisateur, $motdepasse);
+    $connexion = new PDO("mysql:host=$serveur;port=$port;dbname=$base;charset=utf8mb4", $utilisateur, $motdepasse);
 
     $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -15,4 +16,4 @@ try {
     die("Erreur de connexion : " . $e->getMessage());
 }
 
-?>
+?>  

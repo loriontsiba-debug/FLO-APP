@@ -1,0 +1,17 @@
+@media (max-width: 1100px) {
+	.dashboard,
+	.dashboard-container,
+	.dashboard-content {
+		width: 100%;
+		max-width: 100%;
+	}
+}
+
+@media (max-width: 699px) {
+	.dashboard,
+	.dashboard-container,
+	.dashboard-content {
+		padding-left: 16px;
+		padding-right: 16px;
+	}
+}

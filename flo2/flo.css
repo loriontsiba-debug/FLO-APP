@@ -49,22 +49,32 @@ a{
  .bt1:hover{
     outline: 1px solid rgb(43, 3, 81); 
 }
-.bt1{
+.bt1 a{
  color: rgb(43, 3, 81);
  cursor: pointer;
 }
 
 .bt2{
-color: aliceblue;
 background-color: rgb(54, 7, 99);
 font-weight:bolder ;
 cursor: pointer;
   font-family :  'Nunito' , sans-serif;
 }
+.bt2 a{
+color: aliceblue;
+}
 .bt2:hover{
     transform: translateY(-8px);
     box-shadow: 0 6px 19px rgba(83, 80, 80, 0.813) ;
     transition: 0.9s;
+}
+.bt a{
+    text-decoration: none;
+    color: white;
+}
+.bt4 a{
+    text-decoration: none;
+    color: rgb(43, 3, 81);
 }
 .hero{
     display: flex;
@@ -233,6 +243,7 @@ var {
     background-color:rgba(245, 245, 220, 0.68) ;
     padding: 20px;
     text-align: center;
+    transition: 3s;
 }
 .section1 p{
     color: rgb(43, 3, 81);
@@ -308,77 +319,55 @@ footer{
 }
 
 
-@media (max-width: 1200px) {
-            html, body {
-          overflow-x: hidden; 
-          align-items: center;
-          justify-content: center;
+@media (max-width: 1100px) {
+         body{
+            overflow-x: hidden;
+         }
+        .first { padding: 0 24px; }
+        .burger { display: flex; }
+        nav {
+                position: absolute;
+                top: 70px;
+                right: 24px;
+                width: min(250px, calc(100vw - 48px));
+                padding: 20px;
+                background: white;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                transform: translateX(calc(100% + 24px));
+                transition: transform 0.3s;
+                border-radius: 18px;
         }
-  .burger{
-    display:flex
-} 
-  nav{
-    position:absolute; 
-    top:70px; 
-    right:0;
-    background:white;
-    width:250px;
-    padding:20px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.1);
-    transform:translateX(100%); 
-    transition:0.3s;
-    border-radius: 18px;
-  }
-  nav.active{
-    transform:translateX(0)
-} 
-  
-  nav ul {
-    flex-direction:column; 
-    gap:15px
+        nav.active { transform: translateX(0); }
+        nav ul { flex-direction: column; gap: 15px; padding: 0; }
+        .validation { flex-direction: column; gap: 12px; }
+        .section2 { grid-template-columns: repeat(2, minmax(260px, 350px)); grid-template-rows: auto; gap: 24px; }
+        .section2 div { width: auto; height: auto; min-height: 200px; }
+        .hero { margin-left: 24px; margin-right: 24px; }
+        .visuel { max-width: 100%; }
+        .image img { max-width: 100%; height: auto; }
+        .flottement1, .flottement2 { position: relative; inset: auto; margin: 20px auto; }
+        .bt, .compteur { justify-content: center; margin-left: 0; }
+        .foot1, .foot2 { flex-wrap: wrap; gap: 24px; margin-left: 24px; margin-right: 24px; }
+        hr { width: calc(100% - 48px); }
 }
-.validation{
-     flex-direction:column;
-     gap: 12px;
 
-    }
-    .section2{
-        display: grid;
-        grid-template-rows:repeat(6,350px) ;
-        grid-template-columns:350px;
-       
-        }
-.foot1,.foot2{
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-}
-section hr{
-    width: auto;
-}
-.hero{
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-}
-.flottement1{
-position: relative;
-right: 120px;
-top:-120px;
-}
-.flottement2{
-    position:relative;
-   left: 290px;
-   top:-800px;
-}
-.bt,.compteur{
-    margin-left: 70px;
-}
-}
-strong span{
-    font-size: 50px;
-    position: relative;
-    left: 30px;
+@media (max-width: 699px) {
+    .first { padding: 8px 16px; flex-wrap: nowrap; gap: 12px; }
+    .flo { margin-right: auto; flex: 0 0 auto; }
+    .validation { display: flex; flex: 0 1 auto; flex-direction: row; gap: 8px; }
+    .validation button { flex: 0 1 auto; min-width: 0; padding: 7px 4px; font-size: 10px; line-height: 1.15; }
+    .validation a { white-space: normal; }
+    nav { top: 68px; }
+        .hero { margin-top: 100px; }
+        .learn { font-size: 22px; }
+        .para { font-size: 16px; line-height: 1.6; }
+        .para br, .section1 br { display: none; }
+        .bt { flex-direction: column; align-items: stretch; padding: 13px 0; }
+        .bt3, .bt4 { padding: 16px; }
+        .compteur { flex-wrap: wrap; gap: 14px; }
+        strong span, var { font-size: 34px; left: 0; }
+        .section2 { grid-template-columns: minmax(0, 1fr); margin: 50px 16px; }
+        .section2 div { border-radius: 24px; padding: 18px; }
+        .foot1, .foot2 { margin-left: 16px; margin-right: 16px; padding: 16px 0; align-items: center; }
+        .foot1 .p p { margin-left: 0; }
 }
