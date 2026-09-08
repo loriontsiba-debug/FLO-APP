@@ -27,6 +27,9 @@ form{
     -moz-backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    -moz-backdrop-filter: blur(10px);
 }
 h1{
     color: #FFFF;
@@ -54,6 +57,9 @@ input{
     -webkit-backdrop-filter: blur(5px);
     -moz-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    -moz-backdrop-filter: blur(5px);
     box-shadow: 4px 4px 60px rgba(0, 0, 0,.2);
     color: #FFFF;
     font-weight: 500;
@@ -88,6 +94,9 @@ input[type="submit"]{
     -webkit-backdrop-filter: blur(5px);
     -moz-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
+     backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    -moz-backdrop-filter: blur(5px);
     position: absolute;
     border-radius: 20px;
 }

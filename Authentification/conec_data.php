@@ -3,7 +3,7 @@
 $serveur = "localhost";
 $base = "flo_app";
 $utilisateur = "root";
-$motdepasse = "King2006";
+$motdepasse = "";
 $port = 3306;
 
 try {

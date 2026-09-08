@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (empty($email)) {
         $erreurEmail = "Veuillez saisir votre email.";
-        } else if (empty($passe)) {
+        } elseif (empty($passe)) {
         $erreurPasse = "Veuillez saisir votre mot de passe.";
         } else {
             $requete = $connexion->prepare("SELECT * FROM users WHERE email = :email");
