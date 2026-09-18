@@ -27,9 +27,9 @@
                   <li><a href="Articles.php">Articles</a></li>
                </ul>
         </nav>
-      <div class="validation">
-         <button class="bt1">Connexion</button>
-         <button class="bt2">Commencer gratuitement</button>
+     <div class="validation">
+        <button class="bt1" type="button" onclick="window.location.href='../Authentification/connec.php'">Connexion</button>
+        <button class="bt2" type="button" onclick="window.location.href='../Authentification/inscri.php'">Commencer gratuitement</button>
       </div>
       </section >
     </header>
