@@ -1,20 +1,16 @@
 <?php
-$host = '127.0.0.1';
-$db   = 'flo_app';
+$serveur = "localhost";
+$db  = 'flo_app';
 $user = 'root';
-$pass = '';
-$charset = 'utf8mb4';
-
-$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-$options = [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::ATTR_EMULATE_PREPARES   => false,
-];
+$pass = '25ADrx@';
 
 try {
-     $pdo = new PDO($dsn, $user, $pass, $options);
-} catch (\PDOException $e) {
-     throw new \PDOException($e->getMessage(), (int)$e->getCode());
+    $connexion = new PDO("mysql:host=$serveur;dbname=$db", $user, $pass);
+
+    $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+} catch (PDOException $e) {
+
+    die("Erreur de connexion : " . $e->getMessage());
 }
 ?>

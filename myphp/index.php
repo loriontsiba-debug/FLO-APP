@@ -1,32 +1,32 @@
 <?php
-// Configuration de la base de données
-// Configuration de la base de données
-$host = '127.0.0.1';
-$db   = 'flo_app';
-$user = 'root';
-$pass = '';
-$charset = 'utf8mb4';
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pass, [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-    ]);
-} catch (PDOException $e) {
-    die("Erreur de connexion : " . $e->getMessage());
+
+require_once 'db.php';
+
+function tableExists(PDO $connexion, string $table): bool
+{
+    $statement = $connexion->prepare(
+        'SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = DATABASE() AND table_name = ?'
+    );
+    $statement->execute([$table]);
+
+    return (bool) $statement->fetchColumn();
 }
 
 $message = '';
+$suiviQuotidienExiste = tableExists($connexion, 'suivi_quotidien');
 
 // Traitement de la soumission du formulaire
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') {
     $humeur   = trim($_POST['humeur'] ?? '');
     $sommeil  = trim($_POST['sommeil'] ?? '');
     $energie  = trim($_POST['energie'] ?? '');
     $douleurs = trim($_POST['douleurs'] ?? '');
     $date     = date('Y-m-d');
 
-    if (!empty($humeur) && !empty($sommeil) && !empty($energie) && !empty($douleurs)) {
-        $stmt = $pdo->prepare("INSERT INTO suivi_quotidien (date_saisie, humeur, sommeil, energie, douleurs) VALUES (?, ?, ?, ?, ?)");
+    if (!$suiviQuotidienExiste) {
+        $message = "La table suivi_quotidien n'existe pas encore dans la base de données.";
+    } elseif (!empty($humeur) && !empty($sommeil) && !empty($energie) && !empty($douleurs)) {
+        $stmt = $connexion->prepare("INSERT INTO suivi_quotidien (date_saisie, humeur, sommeil, energie, douleurs) VALUES (?, ?, ?, ?, ?)");
         if ($stmt->execute([$date, $humeur, $sommeil, $energie, $douleurs])) {
             $message = "Saisie enregistrée avec succès !";
         } else {
@@ -38,8 +38,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 // Récupération du dernier suivi
-$stmt = $pdo->query("SELECT * FROM suivi_quotidien ORDER BY id DESC LIMIT 1");
-$dernierSuivi = $stmt->fetch();
+$dernierSuivi = null;
+if ($suiviQuotidienExiste) {
+    $stmt = $connexion->query("SELECT * FROM suivi_quotidien ORDER BY id DESC LIMIT 1");
+    $dernierSuivi = $stmt->fetch();
+}
 ?>
 
 <!DOCTYPE html>

@@ -88,7 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ]);
               
         
-            header("Location: ../home.php");
+            header("Comment ça marche.php");
             exit();
 
         }   

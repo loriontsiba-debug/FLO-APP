@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['id'] = $user['id'];
             $_SESSION['nom'] = $user['nom'];
 
-            header("Location: ../accueil.php");
+            header("Comment ça marche.php");
             exit();
         }
     }

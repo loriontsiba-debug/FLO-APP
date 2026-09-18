@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS cycle_history (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
-CREATE TABLE suivi_quotidien (
+CREATE TABLE  IF NOT EXISTS suivi_quotidien (
     id INT AUTO_INCREMENT PRIMARY KEY,
     date_saisie DATE NOT NULL,
     humeur VARCHAR(50) NOT NULL,

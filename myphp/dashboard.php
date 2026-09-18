@@ -1,20 +1,40 @@
 <?php
+
 require_once 'db.php';
 
+function tableExists(PDO $connexion, string $table): bool
+{
+    $statement = $connexion->prepare(
+        'SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = DATABASE() AND table_name = ?'
+    );
+    $statement->execute([$table]);
+
+    return (bool) $statement->fetchColumn();
+}
+
 // Récupération de l'utilisateur (ID 1 pour l'exemple)
-$stmt = $pdo->prepare("SELECT * FROM users WHERE id = ?");
-$stmt->execute([1]);
-$user = $stmt->fetch();
+$user = null;
+if (tableExists($connexion, 'users')) {
+    $stmt = $connexion->prepare("SELECT * FROM users WHERE id = ?");
+    $stmt->execute([1]);
+    $user = $stmt->fetch();
+}
 
 // Récupération des logs du jour
-$stmtLog = $pdo->prepare("SELECT * FROM daily_logs WHERE user_id = ? ORDER BY log_date DESC LIMIT 1");
-$stmtLog->execute([1]);
-$log = $stmtLog->fetch();
+$log = null;
+if (tableExists($connexion, 'daily_logs')) {
+    $stmtLog = $connexion->prepare("SELECT * FROM daily_logs WHERE user_id = ? ORDER BY log_date DESC LIMIT 1");
+    $stmtLog->execute([1]);
+    $log = $stmtLog->fetch();
+}
 
 // Récupération de l'historique des cycles
-$stmtHistory = $pdo->prepare("SELECT * FROM cycle_history WHERE user_id = ?");
-$stmtHistory->execute([1]);
-$history = $stmtHistory->fetchAll();
+$history = [];
+if (tableExists($connexion, 'cycle_history')) {
+    $stmtHistory = $connexion->prepare("SELECT * FROM cycle_history WHERE user_id = ?");
+    $stmtHistory->execute([1]);
+    $history = $stmtHistory->fetchAll();
+}
 ?>
 
 <!DOCTYPE html>
