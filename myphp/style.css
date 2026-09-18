@@ -1,26 +1,66 @@
 :root {
-    --bg-main: #fcf8f7;
-    --sidebar-bg: #291238;
-    --card-dark: #37194d;
+    --bg-main: #fcf4f5;
+    --sidebar-bg: #3b204a;
+    --card-dark: #4b2858;
     --card-light: #ffffff;
-    --accent-pink: #e65c8b;
-    --accent-light-pink: #f7d3e0;
-    --accent-green: #38a169;
+    --accent-pink: #d56b8e;
+    --accent-light-pink: #f4d6df;
+    --accent-green: #2f8f83;
     --text-white: #ffffff;
-    --text-dark: #2d3748;
-    --text-muted: #a0aec0;
+    --text-dark: #21172f;
+    --text-muted: #756878;
+    --font-main: 'Trebuchet MS', 'Segoe UI', sans-serif;
 }
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: var(--font-main);
 }
 
 body {
     background-color: var(--bg-main);
     color: var(--text-dark);
+}
+
+.cycle-form-page {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 32px;
+    background: var(--sidebar-bg);
+}
+
+.cycle-form-shell {
+    width: min(760px, 100%);
+}
+
+.cycle-form-brand {
+    color: var(--text-white);
+    margin-bottom: 20px;
+}
+
+.cycle-form-brand h1 {
+    font-size: 36px;
+}
+
+.cycle-form-brand p {
+    color: var(--text-muted);
+}
+
+.cycle-form-welcome {
+    padding: 36px;
+}
+
+.cycle-form-welcome h2 {
+    margin: 8px 0;
+    font-size: 28px;
+}
+
+.cycle-form-welcome > p {
+    color: var(--text-muted);
+    margin-bottom: 24px;
 }
 
 .dashboard-container {
@@ -183,6 +223,170 @@ body {
     cursor: pointer;
 }
 
+.form-feedback {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    margin: 0 auto;
+    overflow: hidden;
+    width: fit-content;
+    max-width: min(100%, 430px);
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid;
+    font-weight: 600;
+    font-size: 13px;
+    color: #3b075f;
+    opacity: 1;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.form-feedback::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: currentColor;
+    content: '';
+    transform-origin: left;
+    animation: feedback-countdown 5s linear forwards;
+}
+
+.feedback-icon {
+    display: grid;
+    width: 24px;
+    height: 24px;
+    flex: 0 0 24px;
+    place-items: center;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.form-feedback.is-hidden {
+    opacity: 0;
+    transform: translateY(-6px);
+    pointer-events: none;
+}
+
+.form-feedback.success {
+    border-color: rgba(255, 255, 255, .45);
+    background: rgba(255, 255, 255, .3);
+    color: #3b075f;
+    backdrop-filter: blur(10px);
+}
+
+.form-feedback.success .feedback-icon {
+    background: #3b075f;
+}
+
+.form-feedback.error {
+    border-color: rgba(255, 255, 255, .45);
+    background: rgba(255, 255, 255, .3);
+    color: #3b075f;
+    backdrop-filter: blur(10px);
+}
+
+.form-feedback.error .feedback-icon {
+    background: #b4234d;
+}
+
+.cycle-form-section {
+    border-left: 4px solid var(--accent-pink);
+}
+
+.eyebrow {
+    color: var(--accent-pink);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+.section-heading h3 {
+    margin: 6px 0;
+    font-size: 22px;
+}
+
+.section-heading p {
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+.cycle-form {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-field label {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.form-field input,
+.form-field select {
+    width: 100%;
+    min-height: 44px;
+    padding: 10px 12px;
+    border: 1px solid #e2d8df;
+    border-radius: 8px;
+    background: #fff;
+    color: var(--text-dark);
+    font: inherit;
+}
+
+.form-field input:focus,
+.form-field select:focus {
+    outline: 2px solid var(--accent-light-pink);
+    border-color: var(--accent-pink);
+}
+
+.input-with-suffix {
+    display: flex;
+    align-items: center;
+    border: 1px solid #e2d8df;
+    border-radius: 8px;
+    padding-right: 12px;
+}
+
+.input-with-suffix input {
+    border: 0;
+}
+
+.input-with-suffix input:focus {
+    outline: none;
+}
+
+.input-with-suffix span {
+    color: var(--text-muted);
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.btn-save-cycle {
+    align-self: end;
+    min-height: 44px;
+    border: 0;
+    border-radius: 8px;
+    background: var(--accent-pink);
+    color: var(--text-white);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.btn-save-cycle:hover {
+    background: #d94d7c;
+}
+
 .metrics-row {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -224,3 +428,1290 @@ body {
 .bar.current {
     background-color: var(--accent-pink);
 }
+
+@media (max-width: 1050px) {
+    .cycle-form {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 760px) {
+    .cycle-form-page {
+        padding: 20px;
+    }
+
+    .cycle-form-welcome {
+        padding: 24px;
+    }
+
+    .dashboard-container {
+        display: block;
+    }
+
+    .sidebar {
+        width: 100%;
+        gap: 18px;
+    }
+
+    .nav-menu {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .main-content {
+        padding: 20px;
+    }
+
+    .top-row,
+    .metrics-row,
+    .cycle-form {
+        grid-template-columns: 1fr;
+    }
+
+    .phase-card {
+        align-items: flex-start;
+    }
+}
+
+/* Dashboard layout inspired by the supplied mockup */
+body {
+    background: #fcf4f5;
+    color: #171326;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+.dashboard-page {
+    min-height: 100vh;
+}
+
+.topbar {
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+    gap: 42px;
+    padding: 0 5vw;
+    background: rgba(255, 255, 255, 0.86);
+    border-bottom: 1px solid #eadfe3;
+}
+
+.brand {
+    color: #171326;
+    font-family: Georgia, serif;
+    font-size: 32px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.brand span {
+    color: #d56b8e;
+}
+
+.burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    border: 0;
+    background: none;
+    cursor: pointer;
+}
+
+.burger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: #333;
+    transition: 0.3s;
+}
+
+
+.top-nav {
+    display: flex;
+    align-self: stretch;
+    align-items: center;
+    gap: 28px;
+}
+
+.top-nav a {
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+    color: #413b4a;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.top-nav a.active {
+    border-bottom: 3px solid #21172f;
+    color: #171326;
+    font-weight: 700;
+}
+
+.account-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+    font-size: 13px;
+}
+
+.account-avatar {
+    display: grid;
+    width: 28px;
+    height: 28px;
+    place-items: center;
+    border-radius: 50%;
+    background: #eee1e9;
+    color: #332148;
+    font-size: 12px;
+}
+
+.notification-button,
+.more-button {
+    border: 0;
+    background: transparent;
+    color: #443849;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.logout-button {
+    margin-left: 10px;
+    padding: 9px 16px;
+    border: 1px solid #a89da5;
+    border-radius: 8px;
+    color: #171326;
+    text-decoration: none;
+}
+
+.dashboard-main {
+    width: min(1260px, calc(100% - 48px));
+    margin: 0 auto;
+    padding: 30px 0 48px;
+}
+
+.calendar-main {
+    width: min(1080px, calc(100% - 48px));
+    margin: 0 auto;
+    padding: 42px 0 60px;
+}
+
+.calendar-page-heading {
+    margin-bottom: 24px;
+}
+
+.calendar-page-heading h1 {
+    margin: 6px 0;
+    font-family: Georgia, serif;
+    font-size: 30px;
+}
+
+.calendar-page-heading p {
+    color: #5d5661;
+    font-size: 14px;
+}
+
+.standalone-calendar {
+    margin-top: 0;
+    padding: 30px;
+}
+
+.welcome-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.dashboard-cycle-button {
+    padding: 11px 18px;
+    border-radius: 22px;
+    background: #251339;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.dashboard-cycle-button:hover {
+    background: #3a2052;
+}
+
+.empty-cycle-card {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 22px;
+    padding: 28px;
+    border: 1px solid #ead6df;
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 0 5px 16px rgba(85, 51, 67, 0.08);
+}
+
+.empty-cycle-icon {
+    display: grid;
+    width: 62px;
+    height: 62px;
+    place-items: center;
+    border-radius: 50%;
+    background: #f6e1e8;
+    color: #a74e72;
+    font-size: 30px;
+}
+
+.empty-cycle-card h2 {
+    margin: 5px 0 7px;
+    font-family: Georgia, serif;
+    font-size: 22px;
+}
+
+.empty-cycle-card p {
+    max-width: 620px;
+    color: #4d4652;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.empty-cycle-card .primary-action {
+    width: auto;
+    margin-top: 0;
+    white-space: nowrap;
+}
+
+.welcome-row h1 {
+    font-family: Georgia, serif;
+    font-size: 27px;
+    font-weight: 700;
+}
+
+.welcome-row p {
+    margin-top: 4px;
+    color: #4d4652;
+    font-size: 14px;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: minmax(250px, 0.72fr) minmax(0, 1.55fr);
+    gap: 20px;
+}
+
+.card {
+    border: 1px solid rgba(228, 216, 221, 0.55);
+    border-radius: 15px;
+    box-shadow: 0 5px 16px rgba(85, 51, 67, 0.08);
+}
+
+.cycle-overview {
+    min-height: 402px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.cycle-overview h2,
+.symptom-card h2,
+.insight-card h2,
+.water-card h2,
+.sleep-card h2,
+.article-section > h2 {
+    font-family: Georgia, serif;
+}
+
+.cycle-overview h2 {
+    align-self: flex-start;
+    font-size: 17px;
+}
+
+.cycle-ring {
+    display: grid;
+    width: 184px;
+    height: 184px;
+    margin: 18px 0 15px;
+    place-items: center;
+    border-radius: 50%;
+    background: conic-gradient(#c46786 0 72%, #f0d5dc 72% 100%);
+}
+
+.cycle-ring::before {
+    position: absolute;
+    width: 148px;
+    height: 148px;
+    border-radius: 50%;
+    background: #fff;
+    content: '';
+}
+
+.cycle-ring-content {
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cycle-ring-content span {
+    font-size: 13px;
+}
+
+.cycle-ring-content strong {
+    font-family: Georgia, serif;
+    font-size: 57px;
+    line-height: 1;
+}
+
+.cycle-overview h3 {
+    margin-bottom: 8px;
+    font-family: Georgia, serif;
+    font-size: 17px;
+}
+
+.cycle-overview p {
+    color: #4d4652;
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+.cycle-overview p strong {
+    color: #171326;
+}
+
+.primary-action {
+    width: 100%;
+    margin-top: auto;
+    padding: 11px 16px;
+    border-radius: 22px;
+    background: #251339;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.dashboard-panels {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    grid-template-rows: 1fr 0.68fr;
+    gap: 16px;
+}
+
+.symptom-card,
+.insight-card,
+.water-card,
+.sleep-card {
+    min-height: 0;
+}
+
+.card-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.symptom-card h2,
+.insight-card h2,
+.water-card h2,
+.sleep-card h2 {
+    font-size: 17px;
+}
+
+.symptom-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 9px;
+    margin-top: 16px;
+}
+
+.symptom {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    border: 0;
+    background: transparent;
+    color: #413b4a;
+    cursor: pointer;
+    font-size: 11px;
+}
+
+.symptom span {
+    display: grid;
+    width: 32px;
+    height: 32px;
+    place-items: center;
+    border-radius: 8px;
+    background: #f6e8ee;
+    color: #413b4a;
+    font-size: 17px;
+}
+
+.symptom.selected span {
+    background: #edbfd0;
+}
+
+.symptom {
+    padding: 6px 3px;
+    border-radius: 9px;
+    color: #3b075f;
+    cursor: pointer;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.symptom:hover {
+    background: rgba(255, 255, 255, .24);
+}
+
+.symptom.selected {
+    background: rgba(255, 255, 255, .34);
+    box-shadow: inset 0 0 0 2px #ff4b90;
+    color: #3b075f;
+    font-weight: 700;
+}
+
+.symptom:nth-child(1) span {
+    background: #f3b6ca;
+}
+
+.symptom:nth-child(2) span {
+    background: #e8a9bd;
+}
+
+.symptom:nth-child(3) span {
+    background: #f0d59c;
+}
+
+.symptom:nth-child(4) span {
+    background: #d9c7e7;
+}
+
+.symptom:nth-child(5) span {
+    background: #c8ddec;
+}
+
+.symptom:nth-child(6) span {
+    background: #d9f0eb;
+}
+
+.symptom:nth-child(7) span {
+    background: #d9c7e7;
+}
+
+.insight-card {
+    background: #f7eaee;
+}
+
+.insight-card p {
+    margin: 16px 0 13px;
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+.insight-card small {
+    font-size: 11px;
+    line-height: 1.35;
+}
+
+.water-card p {
+    margin-top: 7px;
+    font-size: 13px;
+}
+
+.water-progress {
+    height: 7px;
+    margin-top: 20px;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #eedfe5;
+}
+
+.water-progress span {
+    display: block;
+    width: 62.5%;
+    height: 100%;
+    border-radius: inherit;
+    background: #5d3973;
+}
+
+.card-icon,
+.moon-icon {
+    font-size: 20px;
+}
+
+.sleep-card > strong {
+    display: inline-block;
+    margin-top: 20px;
+    font-family: Georgia, serif;
+    font-size: 24px;
+}
+
+.sleep-card > small {
+    font-size: 11px;
+}
+
+.article-section {
+    margin-top: 28px;
+    overflow: hidden;
+}
+
+.cycle-calendar-section {
+    margin-top: 20px;
+}
+
+.calendar-heading,
+.calendar-toolbar,
+.calendar-legend {
+    display: flex;
+    align-items: center;
+}
+
+.calendar-heading {
+    justify-content: space-between;
+    gap: 18px;
+}
+
+.calendar-heading h2 {
+    margin-top: 5px;
+    font-family: Georgia, serif;
+    font-size: 21px;
+}
+
+.calendar-legend {
+    flex-wrap: wrap;
+    gap: 14px;
+    color: #5d5661;
+    font-size: 12px;
+}
+
+.calendar-legend span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.calendar-legend i {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.legend-period {
+    background: #d47b99;
+}
+
+.legend-next-period {
+    border: 2px solid #c46786;
+    background: #f8dce6;
+}
+
+.legend-fertile {
+    background: #d9c7e7;
+}
+
+.legend-ovulation {
+    background: #8b5aa8;
+}
+
+.legend-today {
+    border: 2px solid #5d3973;
+}
+
+.legend-cycle {
+    border: 2px solid #2f8f83;
+    background: #d9f0eb;
+}
+
+.calendar-toolbar {
+    justify-content: center;
+    gap: 18px;
+    margin: 24px 0 16px;
+}
+
+.calendar-toolbar h3 {
+    min-width: 150px;
+    font-family: Georgia, serif;
+    font-size: 17px;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.calendar-nav {
+    display: grid;
+    width: 30px;
+    height: 30px;
+    place-items: center;
+    border: 1px solid #ead6df;
+    border-radius: 50%;
+    background: #fff;
+    color: #392343;
+    cursor: pointer;
+    font-size: 21px;
+    line-height: 1;
+}
+
+.calendar-weekdays,
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.calendar-weekdays {
+    color: #8c7d88;
+    font-size: 11px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.calendar-grid {
+    margin-top: 8px;
+}
+
+.calendar-day {
+    display: grid;
+    min-height: 40px;
+    place-items: center;
+    border-radius: 10px;
+    background: #fbf6f7;
+    color: #302938;
+    font-size: 13px;
+}
+
+.calendar-day.empty-day {
+    background: transparent;
+}
+
+.calendar-day.period-day {
+    background: #e8a9bd;
+    color: #53243c;
+    font-weight: 700;
+}
+
+.calendar-day.today-day {
+    outline: 2px solid #5d3973;
+    outline-offset: -2px;
+}
+
+.calendar-day.cycle-day {
+    box-shadow: inset 0 0 0 2px #2f8f83;
+}
+
+.article-section > h2 {
+    margin-bottom: 14px;
+    font-size: 18px;
+}
+
+.article-row {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.article-card {
+    min-height: 142px;
+    padding: 18px;
+}
+
+.article-card h3 {
+    font-family: Georgia, serif;
+    font-size: 16px;
+    line-height: 1.1;
+}
+
+.article-card p {
+    margin: 9px 0;
+    color: #4d4652;
+    font-size: 12px;
+    line-height: 1.35;
+}
+
+.article-card a {
+    color: #6d3b62;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+@media (max-width: 1200px) {
+    .topbar {
+        flex-wrap: wrap;
+        gap: 12px 24px;
+        padding: 14px 24px;
+    }
+
+    .top-nav {
+        order: 3;
+        width: 100%;
+        height: 36px;
+        gap: 20px;
+        overflow-x: auto;
+    }
+
+    .burger {
+        display: flex;
+        margin-left: auto;
+    }
+
+    .top-nav {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        display: flex;
+        width: 250px;
+        height: auto;
+        padding: 20px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+        overflow: visible;
+        border-radius: 18px;
+        background: #3b075f;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transform: translateX(100%);
+        transition: 0.3s;
+    }
+
+    .top-nav.active {
+        transform: translateX(0);
+    }
+
+    .top-nav a {
+        min-height: auto;
+        padding: 0;
+    }
+
+    .top-nav a.active {
+        border-bottom: 0;
+        color: #171326;
+    }
+
+    .cycle-calendar-section {
+        width: 100%;
+        margin-top: 28px;
+        padding: 22px 18px;
+    }
+
+    .cycle-calendar-section .calendar-heading {
+        padding-bottom: 4px;
+    }
+
+    .cycle-calendar-section .calendar-legend {
+        width: 100%;
+        gap: 9px 14px;
+    }
+
+    .cycle-calendar-section .calendar-toolbar {
+        margin: 22px auto 16px;
+    }
+
+    .calendar-main {
+        width: min(100% - 32px, 700px);
+        padding-top: 28px;
+    }
+
+    .account-area {
+        margin-left: auto;
+    }
+
+    .dashboard-main {
+        width: min(100% - 32px, 600px);
+        padding-top: 24px;
+    }
+
+    .dashboard-grid,
+    .dashboard-panels,
+    .article-row {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-panels {
+        grid-template-rows: auto;
+    }
+
+    .cycle-overview {
+        min-height: 380px;
+    }
+}
+
+@media (max-width: 480px) {
+    html,
+    body {
+        width: 100%;
+        min-width: 0;
+        overflow-x: hidden;
+    }
+
+    .topbar {
+        position: relative;
+        width: 100%;
+        min-height: 64px;
+        padding: 12px 16px;
+    }
+
+    .brand {
+        font-size: 28px;
+    }
+
+    .account-area {
+        gap: 6px;
+    }
+
+    .logout-button {
+        display: inline-block;
+        margin: 0;
+        padding: 7px 9px;
+        font-size: 11px;
+    }
+
+    .dashboard-main,
+    .calendar-main {
+        width: calc(100% - 24px);
+        max-width: none;
+        padding: 22px 0 36px;
+    }
+
+    .welcome-row h1 {
+        max-width: 100%;
+        font-size: 21px;
+        line-height: 1.25;
+    }
+
+    .dashboard-grid,
+    .dashboard-panels,
+    .article-row {
+        width: 100%;
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .card,
+    .cycle-overview,
+    .article-card {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .cycle-overview {
+        min-height: 350px;
+        padding: 20px 16px;
+    }
+
+    .cycle-ring {
+        width: 164px;
+        height: 164px;
+    }
+
+    .cycle-ring::before {
+        width: 132px;
+        height: 132px;
+    }
+
+    .cycle-ring-content strong {
+        font-size: 49px;
+    }
+
+    .symptom-card,
+    .insight-card,
+    .water-card,
+    .sleep-card,
+    .article-card {
+        padding: 18px 16px;
+    }
+
+    .symptom-list {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 6px;
+    }
+
+    .symptom {
+        font-size: 10px;
+        overflow-wrap: anywhere;
+    }
+
+    .calendar-page-heading h1 {
+        font-size: 25px;
+    }
+
+    .standalone-calendar {
+        padding: 18px 12px;
+    }
+
+    .calendar-heading h2 {
+        font-size: 19px;
+    }
+
+    .calendar-legend {
+        gap: 8px 10px;
+        font-size: 10px;
+    }
+
+    .calendar-weekdays,
+    .calendar-grid {
+        gap: 3px;
+    }
+
+    .calendar-day {
+        min-height: 34px;
+        border-radius: 7px;
+        font-size: 12px;
+    }
+
+    .cycle-form-page {
+        display: block;
+        min-height: 100svh;
+        padding: 20px 12px;
+    }
+
+    .cycle-form-shell,
+    .cycle-form-welcome {
+        width: 100%;
+    }
+
+    .cycle-form-welcome {
+        padding: 22px 16px;
+    }
+
+    .cycle-form-welcome h2 {
+        font-size: 23px;
+        line-height: 1.2;
+    }
+
+    .cycle-form {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .btn-save-cycle {
+        width: 100%;
+        padding: 12px 10px;
+        line-height: 1.3;
+    }
+
+    .form-feedback {
+        max-width: calc(100% - 8px);
+        line-height: 1.35;
+    }
+
+    .account-area strong,
+    .notification-button {
+        display: none;
+    }
+
+    .logout-button {
+        margin-left: 0;
+        padding: 8px 10px;
+        font-size: 11px;
+    }
+
+    .welcome-row h1 {
+        font-size: 23px;
+    }
+
+    .welcome-row {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .empty-cycle-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .empty-cycle-icon {
+        margin: 0 auto;
+    }
+
+    .empty-cycle-card .primary-action {
+        width: 100%;
+    }
+
+    .calendar-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .calendar-weekdays,
+    .calendar-grid {
+        gap: 4px;
+    }
+
+    .calendar-day {
+        min-height: 35px;
+    }
+
+    .dashboard-cycle-button {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+.calendar-day.next-period-day {
+    border: 2px solid #c46786;
+    background: #f8dce6;
+    color: #9c4165;
+    font-weight: 700;
+}
+
+.calendar-day.fertile-day {
+    background: #eadff1;
+    color: #54386a;
+}
+
+.calendar-day.ovulation-day {
+    background: #8b5aa8;
+    color: #fff;
+    font-weight: 700;
+    box-shadow: 0 0 0 3px #d9c7e7;
+}
+
+@keyframes feedback-countdown {
+    to {
+        transform: scaleX(0);
+    }
+}
+
+.back-dashboard {
+    display: inline-block;
+    margin-bottom: 18px;
+    color: #3b075f;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.back-dashboard:hover {
+    color: #ff4b90;
+}
+
+/* Style aligne sur les formulaires d'authentification */
+body {
+    background: linear-gradient(45deg, #6d11b8, #ff4b90);
+    color: #21172f;
+    font-family: Arial, sans-serif;
+}
+
+.cycle-form-page {
+    background: linear-gradient(45deg, #6d11b8, #ff4b90);
+}
+
+.cycle-form-welcome,
+.card,
+.empty-cycle-card {
+    border: 1px solid rgba(255, 255, 255, .35);
+    background: rgba(255, 255, 255, .3);
+    box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, .2);
+    backdrop-filter: blur(10px);
+}
+
+.topbar {
+    background: rgba(255, 255, 255, .3);
+    border-bottom: 1px solid rgba(255, 255, 255, .3);
+    backdrop-filter: blur(10px);
+}
+
+.brand,
+.top-nav a,
+.account-area,
+.welcome-row,
+.calendar-page-heading,
+.cycle-form-brand {
+    color: #ffffff;
+}
+
+.brand span,
+.eyebrow {
+    color: #ff4b90;
+}
+
+.top-nav a,
+.welcome-row p,
+.calendar-page-heading p,
+.section-heading p,
+.empty-cycle-card p {
+    color: rgba(255, 255, 255, .9);
+}
+
+.top-nav a.active {
+    border-color: #ffffff;
+}
+
+.dashboard-cycle-button,
+.primary-action,
+.btn-save-cycle {
+    background: #3b075f;
+}
+
+.dashboard-cycle-button:hover,
+.primary-action:hover,
+.btn-save-cycle:hover {
+    background: #ff4b90;
+}
+
+.cycle-form-welcome h2,
+.empty-cycle-card h2,
+.calendar-page-heading h1,
+.calendar-heading h2,
+.calendar-toolbar h3,
+.cycle-overview h2,
+.cycle-overview h3,
+.article-card h3 {
+    color: #ffffff;
+}
+
+.form-field label,
+.form-field input,
+.form-field select,
+.input-with-suffix span {
+    color: #ffffff;
+}
+
+.form-field input,
+.form-field select,
+.input-with-suffix {
+    border-color: rgba(255, 255, 255, .5);
+    background: rgba(255, 255, 255, .16);
+}
+
+.form-field input::placeholder {
+    color: rgba(255, 255, 255, .75);
+}
+
+.cycle-calendar-section {
+    background: rgba(255, 255, 255, .3);
+}
+
+/* Contraste final des options interactives */
+.symptom,
+.symptom span {
+    color: #3b075f !important;
+}
+
+.symptom.selected {
+    background: #ffffff !important;
+    box-shadow: inset 0 0 0 2px #ff4b90, 0 3px 10px rgba(59, 7, 95, .16) !important;
+    color: #3b075f !important;
+}
+
+.symptom.selected span {
+    color: #3b075f !important;
+}
+
+.journal-main {
+    width: min(980px, calc(100% - 48px));
+    margin: 0 auto;
+    padding: 42px 0 60px;
+}
+
+.journal-heading {
+    position: relative;
+    margin-bottom: 26px;
+}
+
+.journal-heading h1 {
+    margin: 6px 0;
+    color: #ffffff;
+    font-family: Georgia, serif;
+    font-size: 30px;
+}
+
+.journal-heading p {
+    max-width: 600px;
+    color: rgba(255, 255, 255, .9);
+}
+
+.journal-action {
+    position: absolute;
+    top: 18px;
+    right: 0;
+    width: auto;
+}
+
+.journal-history {
+    display: grid;
+    gap: 14px;
+}
+
+.journal-entry {
+    display: grid;
+    grid-template-columns: 86px 1fr;
+    align-items: center;
+    gap: 24px;
+    padding: 20px;
+}
+
+.journal-entry-date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: 1px solid rgba(255, 255, 255, .5);
+    color: #3b075f;
+}
+
+.journal-entry-date strong {
+    font-size: 30px;
+}
+
+.journal-entry-date span {
+    font-size: 12px;
+    text-transform: capitalize;
+}
+
+.journal-entry-values {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.journal-entry-values div {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.journal-entry-values small {
+    color: #6d3b62;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.journal-entry-values strong {
+    overflow-wrap: anywhere;
+    color: #3b075f;
+    font-size: 14px;
+}
+
+@media (max-width: 700px) {
+    .journal-main {
+        width: calc(100% - 32px);
+        padding-top: 28px;
+    }
+
+    .journal-heading h1 {
+        font-size: 25px;
+    }
+
+    .journal-action {
+        position: static;
+        display: inline-block;
+        margin-top: 16px;
+    }
+
+    .journal-entry {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .journal-entry-date {
+        align-items: flex-start;
+        border-right: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, .5);
+        padding-bottom: 10px;
+    }
+
+    .journal-entry-values {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+

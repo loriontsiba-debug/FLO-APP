@@ -1,7 +1,22 @@
+:root {
+    --flo-plum: #3b204a;
+    --flo-pink: #d56b8e;
+    --flo-pink-soft: #f4d6df;
+    --flo-bg: #fcf4f5;
+    --flo-text: #21172f;
+    --flo-font: 'Trebuchet MS', 'Segoe UI', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: var(--flo-font);
+}
+
 Body{
     margin: 0;
     max-width: 100%;
     overflow-x: hidden;
+    color: var(--flo-text);
 }
 html{
     max-width: 100%;
@@ -17,7 +32,7 @@ ul{
 
 a{
     text-decoration: none;
-    color: gray;
+    color: #756878;
 }
 
 .l1::before{
@@ -88,7 +103,7 @@ text-align: center;
     left: 27px;
 }
 .S1{
-    background-color: pink;
+    background-color: var(--flo-pink-soft);
     border: none;
 }
 .S2::before{
@@ -98,7 +113,7 @@ text-align: center;
     left: 30px;
 }
 .S2{
- background-color: rgb(227, 227, 165);
+ background-color: #f3e9d2;
  border: none;
 }
 .S3::before{
@@ -108,7 +123,7 @@ text-align: center;
     left: 30px;
 }
 .S3{
-    background-color: rgb(122, 88, 154);
+    background-color: #d9c7e7;
     border: none;
 }
 .S4::before{
@@ -118,7 +133,7 @@ text-align: center;
     left: 27px;
 }
 .S4{
-    background-color: rgb(68, 138, 138);
+    background-color: #d9f0eb;
     border: none;
     
 }
@@ -184,7 +199,7 @@ right: 190px;
     top: 40px;
 }
 main{
-background-color: rgba(255, 192, 203, 0.642);
+background-color: var(--flo-bg);
 
 }
 

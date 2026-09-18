@@ -4,9 +4,14 @@ USE flo_app;
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
+    nom VARCHAR(100),
+    prenom VARCHAR(100),
+    email VARCHAR(150),
+    password VARCHAR(255),
     current_phase VARCHAR(50) NOT NULL,
     cycle_day INT NOT NULL,
     total_cycle_days INT DEFAULT 28,
+    cycle_start_date DATE,
     next_period_date DATE,
     fertile_window_start DATE,
     fertile_window_end DATE,
@@ -20,7 +25,7 @@ CREATE TABLE IF NOT EXISTS users (
 
 CREATE TABLE IF NOT EXISTS daily_logs (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL,
+    user_id INT UNSIGNED NOT NULL,
     log_date DATE NOT NULL,
     mood VARCHAR(50),
     sleep_hours VARCHAR(20),

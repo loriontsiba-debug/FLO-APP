@@ -1,7 +1,22 @@
 
-.body{
-    
-    background-color:whitesmoke ;
+:root {
+    --flo-plum: #3b204a;
+    --flo-pink: #d56b8e;
+    --flo-pink-soft: #f4d6df;
+    --flo-bg: #fcf4f5;
+    --flo-text: #21172f;
+    --flo-muted: #756878;
+    --flo-font: 'Trebuchet MS', 'Segoe UI', sans-serif;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body, .body {
+    background-color: var(--flo-bg);
+    color: var(--flo-text);
+    font-family: var(--flo-font);
 }
 
 .first{
@@ -15,14 +30,16 @@
     top: 0;
     -webkit-backdrop-filter: blur(24px);
     backdrop-filter: blur(24px);
+    background: rgba(255, 255, 255, 0.88);
+    border-bottom: 1px solid #eadfe3;
     
 }
  
 .flo a p{
     font-weight:bold ;
-    color:rgb(54, 7, 99); 
+    color: var(--flo-plum);
     font-size: 22px;
-    font-family :  'Nunito' , sans-serif;
+    font-family: var(--flo-font);
 }
 .flo a p::after{
     content: '🩸';
@@ -35,7 +52,7 @@ nav ul{
 }
 a{
     text-decoration: none;
-    color: #4f4f4fe9;
+    color: var(--flo-muted);
 }
 .validation{
     display: flex;
@@ -45,21 +62,22 @@ a{
     padding: 10px;
     border-radius: 20px;
     border: 1px solid rgb(56, 55, 55);
+    display: inline-block;
 }
  .bt1:hover{
     outline: 1px solid rgb(43, 3, 81); 
 }
 .bt1{
- color: rgb(43, 3, 81);
+ color: var(--flo-plum);
  cursor: pointer;
 }
 
 .bt2{
 color: aliceblue;
-background-color: rgb(54, 7, 99);
+background-color: var(--flo-plum);
 font-weight:bolder ;
 cursor: pointer;
-  font-family :  'Nunito' , sans-serif;
+    font-family: var(--flo-font);
 }
 .bt2:hover{
     transform: translateY(-8px);
@@ -114,7 +132,7 @@ cursor: pointer;
 }
 .bt3{
     color: aliceblue;
-    background-color:  rgb(54, 7, 99);
+    background-color: var(--flo-plum);
     font-weight: bolder;
     cursor: pointer;
     
@@ -128,7 +146,7 @@ cursor: pointer;
     outline: 2px solid rgb(43, 3, 81); 
 }
 .bt4{
- color: rgb(43, 3, 81);
+ color: var(--flo-plum);
  border: 1px solid  #4f4f4fe9;
  background-color: none;
  cursor: pointer;
@@ -219,7 +237,7 @@ var {
 .section1{
    text-align: center;
    margin-top: 50px;
- font-family :  'Nunito' , sans-serif;
+ font-family: var(--flo-font);
 
 }
 .section1 h1{
@@ -308,6 +326,7 @@ footer{
 }
 
 
+
 @media (max-width: 1200px) {
             html, body {
           overflow-x: hidden; 
@@ -377,8 +396,113 @@ top:-120px;
     margin-left: 70px;
 }
 }
+
+@media (max-width: 600px) {
+    .first {
+        padding: 10px 16px;
+        justify-content: space-between;
+    }
+
+    .first .validation {
+        display: none;
+    }
+
+    .hero {
+        width: calc(100% - 32px);
+        margin: 100px auto 0;
+    }
+
+    .learn {
+        font-size: 21px;
+    }
+
+    .para {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    .bt {
+        width: 100%;
+        margin: 0;
+        padding: 10px 0;
+        flex-direction: column;
+    }
+
+    .bt3,
+    .bt4 {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .compteur {
+        justify-content: center;
+        gap: 14px;
+        margin: 20px 0 0;
+    }
+
+    .visuel {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .image p img {
+        width: 100%;
+        height: auto;
+    }
+
+    .flottement1,
+    .flottement2 {
+        position: relative;
+        top: auto;
+        right: auto;
+        left: auto;
+        width: min(100%, 300px);
+        margin: 16px auto;
+    }
+
+    .flottement2 {
+        height: auto;
+        min-height: 150px;
+    }
+
+    .section2 {
+        width: calc(100% - 32px);
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: repeat(6, auto);
+        gap: 16px;
+        margin: 40px auto;
+    }
+
+    .section2 div {
+        width: 100%;
+        height: auto;
+        min-height: 160px;
+        border-radius: 20px;
+    }
+}
+
 strong span{
     font-size: 50px;
     position: relative;
     left: 30px;
+}
+
+/* Accents communs de l'application */
+.learn span,
+.cycle button {
+    color: var(--flo-pink);
+}
+
+.cycle button {
+    background: var(--flo-pink-soft);
+}
+
+.section2 div {
+    background: #ffffff;
+    border: 1px solid #eadfe3;
+    box-shadow: 0 5px 16px rgba(59, 32, 74, .08);
+}
+
+footer {
+    background: var(--flo-plum);
 }

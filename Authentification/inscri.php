@@ -13,6 +13,8 @@ $erreurPassee = "";
 
 require 'conec_data.php';
 
+session_start();
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $nom = htmlspecialchars(trim($_POST["nom"]));
@@ -86,9 +88,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ':email' => $email,
             ':password' => $hashedPassword
         ]);
-              
-        
-            header("Comment ça marche.php");
+                            $_SESSION['id'] = (int) $connexion->lastInsertId();
+                            $_SESSION['nom'] = $nom;
+                            $_SESSION['prenom'] = $prenom;
+
+                        header('Location: ../myphp/dashboard.php');
             exit();
 
         }   

@@ -32,8 +32,8 @@ $nb_utilisateurs = 1542;
                </ul>
         </nav>
       <div class="validation">
-        <button class="bt1" type="button" onclick="window.location.href='../Authentification/connec.php'">Connexion</button>
-        <button class="bt2" type="button" onclick="window.location.href='../Authentification/inscri.php'">Commencer gratuitement</button>
+        <a class="bt1" href="../Authentification/connec.php">Connexion</a>
+        <a class="bt2" href="../Authentification/inscri.php">Commencer gratuitement</a>
       </div>
       </section >
       <section class="hero">
@@ -48,7 +48,7 @@ $nb_utilisateurs = 1542;
                             <P>Flo vous accompagne dans le suivi de votre cycle <br> menstruel — calendrier,symptomes,prédictions <br>d'ovulation et articles éducatifs réunis en un seul outil.</P>
                         </div>
                         <div class="bt">
-                            <button class="bt3">essayer gratuitement</button>
+                          <button class="bt3" onclick="window.location.href='../myphp/cycle-form.php'">Suivre mon cycle</button>
                             <button class="bt4">voir la demo</button>
                         </div>
                        <div class="compteur">

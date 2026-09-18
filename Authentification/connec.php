@@ -8,6 +8,8 @@ $erreurPasse = "";
 
 require_once 'conec_data.php';
 
+session_start();
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $email = htmlspecialchars(trim($_POST["email"] ?? ""));
@@ -38,8 +40,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             $_SESSION['id'] = $user['id'];
             $_SESSION['nom'] = $user['nom'];
+            $_SESSION['prenom'] = $user['prenom'];
 
-            header("Comment ça marche.php");
+            header('Location: ../myphp/dashboard.php');
             exit();
         }
     }
